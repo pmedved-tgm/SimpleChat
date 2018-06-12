@@ -47,7 +47,7 @@ public class ClientController {
 
 
     @FXML
-    private void send(){
+    private void send() throws IOException {
         if(username.equals("")){
             username = JOptionPane.showInputDialog("Bitte geben Sie ihren Usernamen ein");
             onlineUsers.setText(onlineUsers.getText() + "\n" + username);

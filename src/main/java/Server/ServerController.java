@@ -14,17 +14,40 @@ public class ServerController {
     private BufferedReader in;
 
     public  ServerController(){
-        System.out.println("seas");
+        try {
+            serverSocket = new ServerSocket(2231);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //Man braucht den Thread damit .accept nicht alles Blockiert
         Thread t = new Thread() {
             @Override
             public void run() {
                 while(true){
                     try {
-                        serverSocket = new ServerSocket(2231);
+
                         clientSocket = serverSocket.accept();
-                        out = new PrintWriter(clientSocket.getOutputStream(), true);
-                        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                        Thread t = new Thread() {
+                            @Override
+                            public void run() {
+                                while(true){
+                                    try {
+
+                                        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                                        String msg = in.readLine();
+                                        //out = new PrintWriter(clientSocket.getOutputStream(), true);
+                                        System.out.println(msg);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        };
+                        t.start();
+
+                        System.out.println("Client accepted");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
