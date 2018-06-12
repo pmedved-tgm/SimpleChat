@@ -64,7 +64,7 @@ public class ClientController {
         }
 
         if(mainTextArea.getText().equals("")) {
-            mainTextArea.setText(username + ": " + resp);
+            mainTextArea.setText(resp);
         }else{
             mainTextArea.setText(mainTextArea.getText() + "\n" + username + ": " + resp);
         }

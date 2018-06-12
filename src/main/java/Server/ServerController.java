@@ -1,5 +1,8 @@
 package Server;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,6 +15,11 @@ public class ServerController {
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
+
+    @FXML
+    private TextArea mainTextArea;
+    @FXML
+    private TextArea onlineUsers;
 
     public  ServerController(){
         try {
@@ -32,12 +40,24 @@ public class ServerController {
                         Thread t = new Thread() {
                             @Override
                             public void run() {
+                                try {
+                                    in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                                    out = new PrintWriter(clientSocket.getOutputStream(), true);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
                                 while(true){
                                     try {
-
-                                        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                                         String msg = in.readLine();
-                                        //out = new PrintWriter(clientSocket.getOutputStream(), true);
+
+                                        if(mainTextArea.getText().equals("")) {
+                                            mainTextArea.setText(msg);
+                                        }else{
+                                            mainTextArea.setText(mainTextArea.getText() + "\n" + msg);
+                                        }
+
+                                        out.println(msg);
                                         System.out.println(msg);
                                     } catch (IOException e) {
                                         e.printStackTrace();
