@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerController {
     private ServerSocket serverSocket;
@@ -28,6 +29,8 @@ public class ServerController {
             e.printStackTrace();
         }
 
+        ArrayList<PrintWriter> writers = new ArrayList<>();
+
         //Man braucht den Thread damit .accept nicht alles Blockiert
         Thread t = new Thread() {
             @Override
@@ -42,7 +45,7 @@ public class ServerController {
                             public void run() {
                                 try {
                                     in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                                    out = new PrintWriter(clientSocket.getOutputStream(), true);
+                                    writers.add(new PrintWriter(clientSocket.getOutputStream(), true));
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -57,7 +60,10 @@ public class ServerController {
                                             mainTextArea.setText(mainTextArea.getText() + "\n" + msg);
                                         }
 
-                                        out.println(msg);
+                                        for(PrintWriter writer: writers){
+                                            writer.println(msg);
+                                        }
+
                                         System.out.println(msg);
                                     } catch (IOException e) {
                                         e.printStackTrace();

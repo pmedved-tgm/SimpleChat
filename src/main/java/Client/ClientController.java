@@ -40,6 +40,28 @@ public class ClientController {
             //Empfangen
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
+
+            Thread t = new Thread() {
+                @Override
+                public void run() {
+                    String resp = "Error getting Response";
+                    for(;;){
+                        try {
+                            resp = in.readLine();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        if(mainTextArea.getText().equals("")) {
+                            mainTextArea.setText(resp);
+                        }else{
+                            mainTextArea.setText(mainTextArea.getText() + "\n"  + resp);
+                        }
+                    }
+                }
+            };
+
+            t.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,19 +77,6 @@ public class ClientController {
 
         out.println(username + ": " +inputTextArea.getText());
 
-        String resp = "Error getting Response";
-
-        try {
-            resp = in.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if(mainTextArea.getText().equals("")) {
-            mainTextArea.setText(resp);
-        }else{
-            mainTextArea.setText(mainTextArea.getText() + "\n" + username + ": " + resp);
-        }
 
         inputTextArea.clear();
 
