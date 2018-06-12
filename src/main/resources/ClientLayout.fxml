@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TextArea disable="true" prefHeight="373.0" prefWidth="482.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField prefHeight="2.0" prefWidth="542.0" />
+            <Button mnemonicParsing="false" text="Senden" />
+         </children>
+      </HBox>
+   </bottom>
+   <right>
+      <TextArea disable="true" prefHeight="373.0" prefWidth="131.0" text="Connected Users:" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
