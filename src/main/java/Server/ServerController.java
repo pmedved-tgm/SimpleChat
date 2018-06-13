@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ServerController {
     private ServerSocket serverSocket;
@@ -58,8 +59,25 @@ public class ServerController {
                                     try {
                                         String msg = in.readLine();
 
+                                        //Sieht nach ob die vom Server erhaltene nachricht !! enthält --> !! = Nutzer offline
+                                        if(msg.substring(0,2).equals("!!")){
+                                            // Splitten die onlineUser nach den neuen Zeilen
+                                            ArrayList<String> namen = new ArrayList<>(Arrays.asList(onlineUsers.getText().split("\n")));
+
+                                            //Geht die Liste durch und löscht den offline User aus der Liste
+                                            for(String name : namen){
+                                                if(name.equals(msg.substring(2,msg.length()))){
+                                                    namen.remove(name);
+                                                }
+                                            }
+
+                                            //Setzt die onlineUser anzeige neu, damit der offline User nicht mehr angezeigt wird
+                                            onlineUsers.setText(String.join("\n", (String[]) namen.toArray(new String[0])));
+
+                                        }
+
                                         String name = msg.split(":")[0];
-                                        if (!onlineUsers.getText().contains(name)) {
+                                        if (!onlineUsers.getText().contains(name) && !name.contains("!!")) {
                                             onlineUsers.setText(onlineUsers.getText() + "\n" + name);
                                         }
 
