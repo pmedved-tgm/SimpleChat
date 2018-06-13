@@ -12,7 +12,11 @@ public class ServerMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         try{
             //Layout File wird geladen
-            Parent root = FXMLLoader.load(ClassLoader.getSystemResource("ServerLayout.fxml"));
+            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("ServerController.fxml"));
+            Parent root = loader.load();
+
+            //Controller wird vom loader geholt
+            ServerController controller = loader.getController();
 
             //Scene wird erstellt
             Scene scene = new Scene(root);
@@ -20,6 +24,10 @@ public class ServerMain extends Application {
             //Fenster wird erstellt
             primaryStage.setTitle("Simple Chat Server");
             primaryStage.setScene(scene);
+
+            //Close Event wird definiert
+            primaryStage.setOnCloseRequest(e -> controller.shutdown());
+
             primaryStage.show();
         }catch (Exception e){
             e.printStackTrace();

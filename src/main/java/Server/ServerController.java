@@ -23,6 +23,8 @@ public class ServerController {
     @FXML
     private TextArea onlineUsers;
 
+    private boolean keepGoing = true;
+
     public  ServerController(){
         try {
             serverSocket = new ServerSocket(5050);
@@ -36,7 +38,7 @@ public class ServerController {
         Thread t = new Thread() {
             @Override
             public void run() {
-                while(true){
+                while(keepGoing){
                     try {
 
                         clientSocket = serverSocket.accept();
@@ -55,7 +57,7 @@ public class ServerController {
                                     e.printStackTrace();
                                 }
 
-                                while(true){
+                                while(keepGoing){
                                     try {
                                         String msg = in.readLine();
 
@@ -108,6 +110,16 @@ public class ServerController {
             }
         };
         t.start();
+    }
 
+    public void shutdown(){
+        this.keepGoing = false;
+
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.exit(0);
     }
 }
