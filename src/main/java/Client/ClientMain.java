@@ -10,10 +10,21 @@ import javafx.stage.WindowEvent;
 
 import javax.naming.ldap.Control;
 
+/**
+ * In dieser Klasse wird das XML File für den Client geladen und die dazugehörige GUI erstellt
+ *
+ * @author Philipp Medved
+ * @version 13.06.2018
+ */
 public class ClientMain extends Application {
 
+    /**
+     * Diese Methode wird verwendet um die GUI zu laden und erstellen
+     *
+     * @param primaryStage
+     */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         try{
             //Layout File wird geladen
             FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("ClientLayout.fxml"));

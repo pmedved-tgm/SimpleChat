@@ -14,6 +14,13 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+/**
+ *
+ *
+ * @author Philipp Medved
+ * @version 13.06.2018
+ */
 public class ClientController {
 
     @FXML

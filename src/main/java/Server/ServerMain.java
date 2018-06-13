@@ -6,10 +6,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * In dieser Klasse wird das XML File für den Server geladen und die dazugehörige GUI erstellt
+ *
+ * @author Philipp Medved
+ * @version 13.06.2018
+ */
 public class ServerMain extends Application {
 
+    /**
+     * Diese Methode wird verwendet um die GUI zu laden und erstellen
+     *
+     * @param primaryStage
+     */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         try{
             //Layout File wird geladen
             FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("ServerLayout.fxml"));
