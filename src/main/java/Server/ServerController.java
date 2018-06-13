@@ -14,9 +14,14 @@ import java.util.Arrays;
 
 public class ServerController {
     private ServerSocket serverSocket;
-    private Socket clientSocket;
     //private PrintWriter out;
     //private BufferedReader in;
+    private Socket clientSocket;
+    private Thread accepter;
+    private ArrayList<Thread> clients = new ArrayList<>();
+    private ArrayList<Socket> clientSockets = new ArrayList<>();
+    private ArrayList<PrintWriter> writers = new ArrayList<>();
+    private ArrayList<BufferedReader> readers = new ArrayList<>();
 
     @FXML
     private TextArea mainTextArea;
@@ -32,31 +37,37 @@ public class ServerController {
             e.printStackTrace();
         }
 
-        ArrayList<PrintWriter> writers = new ArrayList<>();
+
 
         //Man braucht den Thread damit .accept nicht alles Blockiert
-        Thread t = new Thread() {
+        accepter = new Thread() {
             @Override
             public void run() {
                 while(keepGoing){
                     try {
-
                         clientSocket = serverSocket.accept();
 
+                        //Client wird in die Clientliste gespiechert
+                        clientSockets.add(clientSocket);
 
+                        //Thread für die einzelnen CLients
                         Thread t = new Thread() {
                             @Override
                             public void run() {
                                 BufferedReader in = null;
+
                                 try {
                                     in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                                    //Leser wird in die Leserliste hinzugefügt
+                                    readers.add(in);
 
                                     //added den Client in eine Liste um die Nachricht an alle senden zu können
                                     writers.add(new PrintWriter(clientSocket.getOutputStream(), true));
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-
+                                Socket myClient = clientSocket;
                                 while(keepGoing){
                                     try {
                                         String msg = in.readLine();
@@ -65,7 +76,7 @@ public class ServerController {
                                         if(msg.substring(0,2).equals("!!")){
                                             // Splitten die onlineUser nach den neuen Zeilen
                                             ArrayList<String> namen = new ArrayList<>(Arrays.asList(onlineUsers.getText().split("\n")));
-
+                                            clientSockets.remove(myClient);
                                             //Geht die Liste durch und löscht den offline User aus der Liste
                                             for(String name : namen){
                                                 if(name.equals(msg.substring(2,msg.length()))){
@@ -78,10 +89,12 @@ public class ServerController {
 
                                         }
 
+                                        //Check ob der User zum ersten mal schreibt
                                         String name = msg.split(":")[0];
                                         if (!onlineUsers.getText().contains(name) && !name.contains("!!")) {
                                             onlineUsers.setText(onlineUsers.getText() + "\n" + name);
                                         }
+
 
                                         if(mainTextArea.getText().equals("")) {
                                             mainTextArea.setText(msg);
@@ -89,33 +102,57 @@ public class ServerController {
                                             mainTextArea.setText(mainTextArea.getText() + "\n" + msg);
                                         }
 
+                                        //Schickt die Nachrichten an alle Clients
                                         for(PrintWriter writer: writers){
                                             writer.println(msg);
                                         }
 
                                         System.out.println(msg);
                                     } catch (IOException e) {
-                                        e.printStackTrace();
+                                        //e.printStackTrace();
                                     }
                                 }
                             }
                         };
                         t.start();
+                        clients.add(t);
 
                         System.out.println("Client accepted");
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        //e.printStackTrace();
                     }
                 }
             }
         };
-        t.start();
+        accepter.start();
     }
 
     public void shutdown(){
         this.keepGoing = false;
 
         try {
+            accepter.interrupt();
+            serverSocket.close();
+            accepter.join();
+
+            for(int i = 0; i < writers.size(); i++){
+                //Thread
+                clients.get(i).interrupt();
+
+                //Server out, in
+                writers.get(i).close();
+                readers.get(i).close();
+
+                //Schließen der client Sockets
+                try{
+                    clientSockets.get(i).close();
+                }catch(Exception e){
+
+                }
+
+                //Thread schließen
+                clients.get(i).join();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

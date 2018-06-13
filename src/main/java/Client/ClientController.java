@@ -37,6 +37,7 @@ public class ClientController {
     private BufferedReader in;
 
     private Thread listener;
+    private Thread checkIfConnected;
 
     public ClientController() {
         try {
@@ -46,7 +47,7 @@ public class ClientController {
             //Empfangen
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-
+            //Thread der wartet ob nachrichten rein kommen
             listener = new Thread() {
                 @Override
                 public void run() {
@@ -54,7 +55,9 @@ public class ClientController {
                     while(keepGoing){
                         try {
                             resp = in.readLine();
-
+                            if(resp == null){
+                                shutdown();
+                            }
                             //Sieht nach ob die vom Server erhaltene nachricht !! enthält --> !! = Nutzer offline
                             if(resp.substring(0,2).equals("!!")){
                                 // Splitten die onlineUser nach den neuen Zeilen
@@ -91,6 +94,25 @@ public class ClientController {
             };
 
             listener.start();
+
+            checkIfConnected = new Thread() {
+                @Override
+                public void run() {
+                    while(keepGoing){
+                        if(!clientSocket.isConnected()){
+                            shutdown();
+                            break;
+                        }
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            //e.printStackTrace();
+                        }
+                    }
+                }
+            };
+            checkIfConnected.start();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -100,16 +122,26 @@ public class ClientController {
         this.keepGoing = false;
 
         try {
+            //checkIfConnected.interrupt();
+            checkIfConnected.join();
+
             //Schickt den Server den Befehl die Resource des Useres überall zu entfernen
             out.println("!!"+username);
 
+            //Thread
             listener.interrupt();
+
+            //Out, in und Socket des Clients werden geschlossen
             out.close();
             in.close();
             clientSocket.close();
+
+            //Thread wird geschlossen
             listener.join();
+
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Interrupted");
         }
         System.exit(0);
     }

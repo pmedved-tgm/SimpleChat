@@ -12,7 +12,7 @@ public class ServerMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         try{
             //Layout File wird geladen
-            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("ServerController.fxml"));
+            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("ServerLayout.fxml"));
             Parent root = loader.load();
 
             //Controller wird vom loader geholt
