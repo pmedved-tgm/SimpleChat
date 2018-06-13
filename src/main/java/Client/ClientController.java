@@ -34,7 +34,7 @@ public class ClientController {
 
     public ClientController() {
         try {
-            clientSocket = new Socket("127.0.0.1",2231);
+            clientSocket = new Socket("127.0.0.1",5050);
             //Rausschicken
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             //Empfangen
@@ -48,6 +48,11 @@ public class ClientController {
                     for(;;){
                         try {
                             resp = in.readLine();
+
+                            String name = resp.split(":")[0];
+                            if (!onlineUsers.getText().contains(name)) {
+                                onlineUsers.setText(onlineUsers.getText() + "\n" + name);
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -72,6 +77,9 @@ public class ClientController {
     private void send() throws IOException {
         if(username.equals("")){
             username = JOptionPane.showInputDialog("Bitte geben Sie ihren Usernamen ein");
+            /*while(onlineUsers.getText().contains(username)){
+                username = JOptionPane.showInputDialog("Dieser Username ist bereits vergeben bitte geben Sie einen anderen ein");
+            }*/
             onlineUsers.setText(onlineUsers.getText() + "\n" + username);
         }
 

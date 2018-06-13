@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class ServerController {
     private ServerSocket serverSocket;
     private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
+    //private PrintWriter out;
+    //private BufferedReader in;
 
     @FXML
     private TextArea mainTextArea;
@@ -24,7 +24,7 @@ public class ServerController {
 
     public  ServerController(){
         try {
-            serverSocket = new ServerSocket(2231);
+            serverSocket = new ServerSocket(5050);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,11 +40,15 @@ public class ServerController {
 
                         clientSocket = serverSocket.accept();
 
+
                         Thread t = new Thread() {
                             @Override
                             public void run() {
+                                BufferedReader in = null;
                                 try {
                                     in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                                    //added den Client in eine Liste um die Nachricht an alle senden zu können
                                     writers.add(new PrintWriter(clientSocket.getOutputStream(), true));
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -53,6 +57,11 @@ public class ServerController {
                                 while(true){
                                     try {
                                         String msg = in.readLine();
+
+                                        String name = msg.split(":")[0];
+                                        if (!onlineUsers.getText().contains(name)) {
+                                            onlineUsers.setText(onlineUsers.getText() + "\n" + name);
+                                        }
 
                                         if(mainTextArea.getText().equals("")) {
                                             mainTextArea.setText(msg);
