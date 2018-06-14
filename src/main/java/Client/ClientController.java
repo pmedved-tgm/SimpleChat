@@ -16,10 +16,11 @@ import java.util.Arrays;
 
 
 /**
- *
+ * In dieser Klasse wird die Funtkionalität des Clients erstellt, einerseits werden hier die
+ * Sockets erstellt aber auch Funktionalitäten wie senden und schließen
  *
  * @author Philipp Medved
- * @version 13.06.2018
+ * @version 14.06.2018
  */
 public class ClientController {
 
@@ -46,6 +47,12 @@ public class ClientController {
     private Thread listener;
     private Thread checkIfConnected;
 
+    /**
+     * Im Konstruktor des ClientControllers wird der Socket zur Verbindung erstellt
+     * Ebenso wird ein Thread erstellt der es erlaubt, dass mehrere User
+     * gleichzeitig chatten können
+     *
+     */
     public ClientController() {
         try {
             clientSocket = new Socket("127.0.0.1",5050);
@@ -125,6 +132,11 @@ public class ClientController {
         }
     }
 
+    /**
+     * Die shutdown Methode wird verwendet um den Client sauber zu schliesen
+     * Shutdown sendet eine bestimmte Nachricht an den Server, dieser erkennt
+     * den Befehl und löscht ihn aus der Liste
+     */
     public void shutdown(){
         this.keepGoing = false;
 
@@ -153,8 +165,13 @@ public class ClientController {
         System.exit(0);
     }
 
+    /**
+     * Die send Methode wird verwendet um die Nachricht aus dem Textfield zu lesen und an
+     * den Server zu schicken
+     *
+     */
     @FXML
-    private void send() throws IOException {
+    private void send(){
         if(username.equals("")){
             username = JOptionPane.showInputDialog("Bitte geben Sie ihren Usernamen ein");
             while(onlineUsers.getText().contains(username) || username.contains("!!")){

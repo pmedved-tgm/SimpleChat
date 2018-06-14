@@ -14,7 +14,9 @@ import java.util.Arrays;
 
 
 /**
- *
+ * In dieser Klasse wird die Funtkionalität des Servers erstellt, einerseits wird hier der
+ * Socket für die Clients geöffnet, ebenfalls wird in dieser Klasse eine shutdown Methode geschrieben,
+ * welche den Server und dessen Clients sauber schließt.
  *
  * @author Philipp Medved
  * @version 13.06.2018
@@ -37,6 +39,12 @@ public class ServerController {
 
     private boolean keepGoing = true;
 
+    /**
+     * Im Konstruktor des ServerControllers wird der Socket zur Verbindung erstellt
+     * Ebenso zwei Threads erstellt, einerseits der Thread der es erlaubt, dass das accept()
+     * nicht den Server Blockiert und andererseits ein Thread für jeden eingeloggten Clients
+     *
+     */
     public  ServerController(){
         try {
             serverSocket = new ServerSocket(5050);
@@ -134,6 +142,12 @@ public class ServerController {
         accepter.start();
     }
 
+    /**
+     * Die shutdown Methode wird verwendet um den Server und all seine Verbundenen
+     * Clients zu sauber zu beenden.
+     * Der Server geht eine Liste an allen Clients durch und beendet sie jeweil und
+     * schließt dessen Fenster
+     */
     public void shutdown(){
         this.keepGoing = false;
 
