@@ -7,17 +7,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * In dieser Klasse wird das XML File für den Server geladen und die dazugehörige GUI erstellt
+ * In dieser Klasse wird das XML File f&uuml;r den Server geladen und die dazugeh&ouml;rige GUI erstellt
  *
  * @author Philipp Medved
- * @version 13.06.2018
+ * @version 14.06.2018
  */
 public class ServerMain extends Application {
 
     /**
-     * Diese Methode wird verwendet um die GUI zu laden und erstellen
+     * Diese Methode wird verwendet um die GUI des Servers zu laden und erstellen
      *
-     * @param primaryStage
+     * @param primaryStage Standardparameter für eine FXMl GUI
      */
     @Override
     public void start(Stage primaryStage){

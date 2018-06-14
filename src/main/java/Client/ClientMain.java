@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * In dieser Klasse wird das XML File für den Client geladen und die dazugehörige GUI erstellt
+ * In dieser Klasse wird das XML File f&uuml;r den Client geladen und die dazugeh&ouml;rige GUI erstellt
  *
  * @author Philipp Medved
  * @version 14.06.2018
@@ -15,9 +15,9 @@ import javafx.stage.Stage;
 public class ClientMain extends Application {
 
     /**
-     * Diese Methode wird verwendet um die GUI zu laden und erstellen
+     * Diese Methode wird verwendet um die GUI des Clients zu laden und erstellen
      *
-     * @param primaryStage
+     * @param primaryStage Standardparameter für eine FXMl GUI
      */
     @Override
     public void start(Stage primaryStage){

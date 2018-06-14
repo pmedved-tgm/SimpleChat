@@ -14,8 +14,8 @@ import java.util.Arrays;
 
 
 /**
- * In dieser Klasse wird die Funtkionalität des Servers erstellt, einerseits wird hier der
- * Socket für die Clients geöffnet, ebenfalls wird in dieser Klasse eine shutdown Methode geschrieben,
+ * In dieser Klasse wird die Funtkionalit&auml;t des Servers erstellt, einerseits wird hier der
+ * Socket f&uuml;r die Clients ge&ouml;ffnet, ebenfalls wird in dieser Klasse eine shutdown Methode geschrieben,
  * welche den Server und dessen Clients sauber schließt.
  *
  * @author Philipp Medved

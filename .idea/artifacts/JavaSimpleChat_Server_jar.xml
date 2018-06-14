@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaSimpleChat_Server:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaSimpleChat_Server_jar</output-path>
+    <root id="archive" name="JavaSimpleChat.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/java/Server/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="JavaSimpleChat_main" />
+    </root>
+  </artifact>
+</component>
