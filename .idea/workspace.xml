@@ -10,15 +10,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c96dcbf5-f1ad-40c4-b153-a1ba130053d7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JavaSimpleChat_Client_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JavaSimpleChat_Server_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Client/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Client/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Client/ClientController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client/ClientMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Client/ClientController.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Client/ClientController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Client/ClientMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Client/ClientMain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Client/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Client/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Client/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Client/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Client/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Client/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Server/ServerController.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Server/ServerController.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Server/ServerMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Server/ServerMain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Server/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Server/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Server/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Server/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/Server/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/Server/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/overview-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaDoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/overview-tree.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -85,8 +98,8 @@
       <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Client/ClientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="195" column="37" lean-forward="true" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
+            <state relative-caret-position="259">
+              <caret line="203" column="1" lean-forward="true" selection-start-line="203" selection-start-column="1" selection-end-line="203" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1736#4020#0" expanded="true" />
@@ -540,7 +553,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -760,12 +773,12 @@
       <workItem from="1528871161950" duration="12134000" />
       <workItem from="1528892924249" duration="9356000" />
       <workItem from="1528955732584" duration="8119000" />
-      <workItem from="1528982983294" duration="8318000" />
+      <workItem from="1528982983294" duration="8366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51228000" />
+    <option name="totallyTimeSpent" value="51276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -779,12 +792,13 @@
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32980332" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.3250825" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.3250825" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32980332" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32838285" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30257186" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30257186" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -797,7 +811,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32838285" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1093,8 +1106,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Client/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="195" column="37" lean-forward="true" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
+        <state relative-caret-position="259">
+          <caret line="203" column="1" lean-forward="true" selection-start-line="203" selection-start-column="1" selection-end-line="203" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1736#4020#0" expanded="true" />
@@ -1124,7 +1137,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
