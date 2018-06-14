@@ -1,11 +1,13 @@
 package Client;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,10 +33,13 @@ public class ClientController {
     private Button sendButton;
 
     @FXML
-    private TextField inputTextArea;
+    private TextField inputTextArea = null;
 
     @FXML
     private TextArea onlineUsers;
+
+    @FXML
+    private TextField nameTextArea;
 
     private String username = "";
 
@@ -145,7 +150,7 @@ public class ClientController {
             checkIfConnected.join();
 
             //Schickt den Server den Befehl die Resource des Useres überall zu entfernen
-            out.println("!!"+username);
+            out.println("!!"+nameTextArea.getText());
 
             //Thread
             listener.interrupt();
@@ -173,19 +178,24 @@ public class ClientController {
     @FXML
     private void send(){
         if(username.equals("")){
-            username = JOptionPane.showInputDialog("Bitte geben Sie ihren Usernamen ein");
-            while(onlineUsers.getText().contains(username) || username.contains("!!")){
-                username = JOptionPane.showInputDialog("Dieser Username ist ungültig");
-            }
+            username = nameTextArea.getText();
             onlineUsers.setText(onlineUsers.getText() + "\n" + username);
         }
 
         out.println(username + ": " +inputTextArea.getText());
 
-
+        nameTextArea.setEditable(false);
         inputTextArea.clear();
 
     }
 
-
+    @FXML
+    void keyPressed(KeyEvent event) {
+        switch (event.getCode()) {
+            case ENTER:
+                send();
+            default:
+                break;
+        }
+    }
 }
