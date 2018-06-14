@@ -33,8 +33,8 @@ public class ClientController {
     @FXML
     private TextField inputTextArea = null;
 
-    @FXML
-    private TextArea onlineUsers;
+    /*@FXML
+    private TextArea onlineUsers;*/
 
     @FXML
     private TextField nameTextArea;
@@ -76,7 +76,7 @@ public class ClientController {
                                 shutdown();
                             }
                             //Sieht nach ob die vom Server erhaltene nachricht !! enthält --> !! = Nutzer offline
-                            if(resp.substring(0,2).equals("!!")){
+                            /*if(resp.substring(0,2).equals("!!")){
                                 // Splitten die onlineUser nach den neuen Zeilen
                                 ArrayList<String> namen = new ArrayList<>(Arrays.asList(onlineUsers.getText().split("\n")));
 
@@ -96,15 +96,16 @@ public class ClientController {
                             String name = resp.split(":")[0];
                             if (!onlineUsers.getText().contains(name) && !name.contains("!!")) {
                                 onlineUsers.setText(onlineUsers.getText() + "\n" + name);
-                            }
+                            }*/
                         } catch (IOException e) {
                             //e.printStackTrace();
                         }
-
-                        if(mainTextArea.getText().equals("")) {
-                            mainTextArea.setText(resp);
-                        }else{
-                            mainTextArea.setText(mainTextArea.getText() + "\n"  + resp);
+                        if(!resp.contains("!!")){
+                            if(mainTextArea.getText().equals("")) {
+                                mainTextArea.setText(resp);
+                            }else{
+                                mainTextArea.setText(mainTextArea.getText() + "\n"  + resp);
+                            }
                         }
                     }
                 }
@@ -177,7 +178,7 @@ public class ClientController {
     private void send(){
         if(username.equals("")){
             username = nameTextArea.getText();
-            onlineUsers.setText(onlineUsers.getText() + "\n" + username);
+            //onlineUsers.setText(onlineUsers.getText() + "\n" + username);
         }
 
         out.println(username + ": " +inputTextArea.getText());
