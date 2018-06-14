@@ -84,12 +84,12 @@ public class ClientController {
                                 for(String name : namen){
                                     if(name.equals(resp.substring(2,resp.length()))){
                                         namen.remove(name);
+                                        break;
                                     }
                                 }
-
                                 //Setzt die onlineUser anzeige neu, damit der offline User nicht mehr angezeigt wird
                                 onlineUsers.setText(String.join("\n", (String[]) namen.toArray(new String[0])));
-                                continue;
+
                             }
 
                             //Hier wird der name aus der Nachricht geholt um zu sehen welche User online sind

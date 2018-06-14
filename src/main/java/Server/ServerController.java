@@ -19,7 +19,7 @@ import java.util.Arrays;
  * welche den Server und dessen Clients sauber schließt.
  *
  * @author Philipp Medved
- * @version 13.06.2018
+ * @version 14.06.2018
  */
 public class ServerController {
     private ServerSocket serverSocket;
@@ -42,7 +42,7 @@ public class ServerController {
     /**
      * Im Konstruktor des ServerControllers wird der Socket zur Verbindung erstellt
      * Ebenso zwei Threads erstellt, einerseits der Thread der es erlaubt, dass das accept()
-     * nicht den Server Blockiert und andererseits ein Thread für jeden eingeloggten Clients
+     * nicht den Server Blockiert und andererseits  ein Thread für jeden eingeloggten Client
      *
      */
     public  ServerController(){
@@ -96,6 +96,7 @@ public class ServerController {
                                             for(String name : namen){
                                                 if(name.equals(msg.substring(2,msg.length()))){
                                                     namen.remove(name);
+                                                    break;
                                                 }
                                             }
 

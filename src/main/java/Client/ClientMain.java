@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  * In dieser Klasse wird das XML File für den Client geladen und die dazugehörige GUI erstellt
  *
  * @author Philipp Medved
- * @version 13.06.2018
+ * @version 14.06.2018
  */
 public class ClientMain extends Application {
 
